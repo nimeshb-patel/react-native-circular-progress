@@ -43,11 +43,12 @@ export default class CircularProgress extends React.PureComponent {
 
     const maxWidthCircle = backgroundWidth ? Math.max(width, backgroundWidth) : width;
     const sizeWithPadding = size / 2 + padding / 2;
+    const sizeMinusPadding = size / 2 - padding / 2;
     const radius = size / 2 - maxWidthCircle / 2 - padding / 2;
 
     const backgroundPath = this.circlePath(
       sizeWithPadding,
-      sizeWithPadding,
+      sizeMinusPadding,
       radius,
       0,
       arcSweepAngle
@@ -55,14 +56,14 @@ export default class CircularProgress extends React.PureComponent {
     const currentFillAngle = (arcSweepAngle * this.clampFill(fill)) / 100;
     const circlePath = this.circlePath(
       sizeWithPadding,
-      sizeWithPadding,
+      sizeMinusPadding,
       radius,
       0,
       currentFillAngle
     );
     const coordinate = this.polarToCartesian(
       sizeWithPadding,
-      sizeWithPadding,
+      sizeMinusPadding,
       radius,
       currentFillAngle
     );
